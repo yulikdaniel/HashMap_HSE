@@ -14,6 +14,8 @@ class HashMap {
     typedef typename std::vector<vector<node>>::const_iterator c_out_iter;
     typedef typename std::vector<node>::const_iterator c_in_iter;
 
+    static const size_t REALLOC_SIZE = 2;
+
     vector<vector<node>> data;
     size_t length, num;
     Hash hasher;
@@ -260,7 +262,7 @@ public:
 
 private:
     void resize() {
-        length *= 2;
+        length *= REALLOC_SIZE;
         vector<vector<node>> temp(length);
         num = 0;
         std::swap(temp, data);
